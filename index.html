@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfólio de Pedro Henrique Garcia, um jovem desenvolvedor apaixonado por sistemas de baixo nível e IA. Explore projetos inovadores como o ecossistema TrackWay e as soluções de software da Vytruve.org." />
+    <title>Pedro Henrique Garcia - Portfólio Cósmico</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Animation & 3D Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.cells.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'cosmic-dark': '#0b0c10',
+              'cosmic-light': '#F9F9F9',
+              'accent-cyan': '#00ffff',
+              'accent-magenta': '#ff00ff',
+              'accent-orange': '#ff7a00',
+              'text-dark': '#EAEAEA',
+              'text-light': '#111320',
+            },
+            animation: {
+              'scroll-down': 'scroll-down 2s infinite',
+              'pulse-glow': 'pulse-glow 3s infinite ease-in-out',
+            },
+            keyframes: {
+              'scroll-down': {
+                '0%': { transform: 'translateY(-10px)', opacity: '0' },
+                '50%': { opacity: '1' },
+                '100%': { transform: 'translateY(10px)', opacity: '0' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)' },
+                '50%': { boxShadow: '0 0 35px rgba(0, 255, 255, 0.7)' },
+              }
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .project-card .project-image {
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .project-card:hover .project-image {
+          transform: scale(1.05);
+      }
+       .project-card .card-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Responsive Timeline */
+      .timeline {
+        position: relative;
+        padding: 1rem 0;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(1rem - 2px);
+        height: 100%;
+        width: 4px;
+        background: #e5e7eb; /* gray-200 */
+      }
+      .dark .timeline::before {
+        background: #374151; /* gray-700 */
+      }
+      .timeline-item {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-dot {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+        height: 16px;
+        width: 16px;
+        background-color: #F9F9F9; /* cosmic-light */
+        border: 3px solid #00ffff; /* accent-cyan */
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ffff;
+      }
+      .dark .timeline-dot {
+        background-color: #0b0c10; /* cosmic-dark */
+      }
+      @media (min-width: 768px) {
+         .timeline {
+           padding: 2rem 0;
+         }
+         .timeline::before {
+           left: 1rem;
+         }
+         .timeline-item {
+           padding-left: 3rem;
+         }
+         .timeline-dot {
+           left: calc(1rem - 6px);
+           top: 0.5rem;
+         }
+      }
+      
+      /* Responsive and Themed AI Chat */
+      .ai-chat-window {
+        height: 400px;
+        min-height: 400px;
+        max-height: 60vh;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #00ffff #d1d5db; /* cyan on gray-300 */
+      }
+      .dark .ai-chat-window {
+        scrollbar-color: #00ffff #374151; /* cyan on gray-700 */
+      }
+      
+      .ai-chat-bubble-user {
+        background-color: #06b6d4; /* cyan-500 */
+        color: white;
+      }
+      .ai-chat-bubble-orion {
+        background-color: #e5e7eb; /* gray-200 */
+        color: #1f2937; /* gray-800 */
+      }
+      .dark .ai-chat-bubble-user {
+        background-color: #0891b2; /* cyan-600 */
+        color: white;
+      }
+      .dark .ai-chat-bubble-orion {
+        background-color: #374151; /* gray-700 */
+        color: #f3f4f6; /* gray-100 */
+      }
+      
+      .ai-chat-input:focus {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-cosmic-light dark:bg-cosmic-dark text-text-light dark:text-text-dark transition-colors duration-500 antialiased leading-relaxed">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
