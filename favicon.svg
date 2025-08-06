@@ -1,0 +1,18 @@
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FFFF"/> <!-- Cyan -->
+      <stop offset="100%" stop-color="#FF00FF"/> <!-- Magenta -->
+    </linearGradient>
+  </defs>
+  <text x="50%" y="50%"
+        font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        font-size="48"
+        font-weight="bold"
+        letter-spacing="4"
+        fill="url(#textGradient)"
+        dominant-baseline="middle"
+        text-anchor="middle">
+    P.H.G.
+  </text>
+</svg>

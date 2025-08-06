@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfólio de Pedro Henrique Garcia, um jovem desenvolvedor apaixonado por sistemas de baixo nível e IA. Explore projetos inovadores como o ecossistema TrackWay e as soluções de software da Vytruve.org." />
+    <title>Pedro Henrique Garcia - Portfólio Cósmico</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'cosmic-dark': '#0b0c10',
+              'accent-cyan': '#00ffff',
+              'accent-magenta': '#ff00ff',
+              'accent-orange': '#ff7a00',
+              'text-dark': '#EAEAEA',
+            },
+            animation: {
+              'scroll-down': 'scroll-down 2s infinite',
+              'pulse-glow': 'pulse-glow 3s infinite ease-in-out',
+              'float-up-down': 'float-up-down 6s ease-in-out infinite',
+            },
+            keyframes: {
+              'scroll-down': {
+                '0%': { transform: 'translateY(-10px)', opacity: '0' },
+                '50%': { opacity: '1' },
+                '100%': { transform: 'translateY(10px)', opacity: '0' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)' },
+                '50%': { boxShadow: '0 0 35px rgba(0, 255, 255, 0.7)' },
+              },
+              'float-up-down': {
+                '0%, 100%': { transform: 'translateY(-10px)' },
+                '50%': { transform: 'translateY(10px)' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* --- From about.css --- */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+        border-left: 2px solid #374151; /* gray-700 */
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -2.5rem;
+        top: 0.25rem;
+        height: 1rem;
+        width: 1rem;
+        border-radius: 9999px;
+        background-color: #00ffff; /* accent-cyan */
+        border: 3px solid #0b0c10; /* cosmic-dark */
+      }
+
+      /* --- From projects.css --- */
+      .project-card .project-image {
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .project-card:hover .project-image {
+        transform: scale(1.05);
+      }
+
+      /* --- From contact.css --- */
+      .ai-chat-window {
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: #4b5563 #1f2937; /* gray-600 gray-800 */
+      }
+      .ai-chat-window::-webkit-scrollbar {
+          width: 8px;
+      }
+      .ai-chat-window::-webkit-scrollbar-track {
+          background: #1f2937; /* gray-800 */
+      }
+      .ai-chat-window::-webkit-scrollbar-thumb {
+          background-color: #4b5563; /* gray-600 */
+          border-radius: 10px;
+          border: 2px solid #1f2937; /* gray-800 */
+      }
+      .ai-chat-bubble-user {
+          background-color: #00ffff; /* accent-cyan */
+          color: #0b0c10; /* cosmic-dark */
+      }
+      .ai-chat-bubble-orion {
+          background-color: #374151; /* gray-700 */
+          color: #EAEAEA; /* text-dark */
+      }
+      .ai-chat-input {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+        transition: box-shadow 0.3s ease-in-out;
+      }
+      .ai-chat-input:focus {
+        box-shadow: 0 0 15px 2px rgba(0, 255, 255, 0.3);
+      }
+      
+      /* Custom scrollbar for Blog Section */
+      .horizontal-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #4b5563 #0b0c10; /* thumb track */
+      }
+      .horizontal-scrollbar::-webkit-scrollbar {
+        height: 8px;
+      }
+      .horizontal-scrollbar::-webkit-scrollbar-track {
+        background: #0b0c10; 
+      }
+      .horizontal-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #4b5563;
+        border-radius: 10px;
+        border: 2px solid #0b0c10;
+      }
+      .horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: #6b7280;
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai",
+    "lenis": "https://esm.sh/lenis@^1.0.42"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-cosmic-dark text-text-dark antialiased leading-relaxed">
+    <noscript>
+      You need to enable JavaScript to run this app. This portfolio uses modern web technologies for an interactive experience.
+    </noscript>
+    <div id="root"></div>
+    
+    <!-- Animation & 3D Libraries: Deferred for non-blocking loading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.cells.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js" defer></script>
+
+    <script type="module" src="index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

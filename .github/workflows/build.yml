@@ -1,0 +1,47 @@
+# Nome do Workflow
+name: Build da Aplicação Vite
+
+# Define os gatilhos (triggers) que iniciam o workflow
+on:
+  # Executa em push para a branch 'main'
+  push:
+    branches: [ main ]
+  # Executa em pull requests direcionados à branch 'main'
+  pull_request:
+    branches: [ main ]
+
+# Define os jobs que serão executados
+jobs:
+  # Job único chamado 'build'
+  build:
+    # O tipo de máquina virtual para executar o job
+    runs-on: ubuntu-latest
+
+    # Sequência de passos que compõem o job
+    steps:
+      # 1. Faz o checkout do código do seu repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Configura o ambiente Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Utiliza a versão 18 do Node.js
+          cache: 'npm'       # Habilita o cache para o npm para acelerar futuras instalações
+
+      # 3. Instala as dependências do projeto
+      - name: Instalar dependências
+        run: npm install
+
+      # 4. Executa o script de build definido no package.json
+      - name: Buildar o projeto
+        run: npm run build
+#
+      # 5. (Opcional) Faz o upload do diretório 'dist' como um artefato
+      # Isso permite que você use os arquivos compilados em outro job (ex: deploy)
+      - name: Upload do artefato de build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files # Nome do artefato
+          path: dist/     # Caminho para o diretório a ser salvo
