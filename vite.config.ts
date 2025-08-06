@@ -14,11 +14,11 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      outDir: './',         // Output na raiz
-      emptyOutDir: false,   // Não limpar a raiz ao buildar!
-      assetsDir: '',        // Evita criar pasta /assets
+      outDir: 'dist',       // pasta padrão do build
+      emptyOutDir: true,    // limpa antes de buildar
+      assetsDir: '',        // evita criar a pasta assets
       rollupOptions: {
-        input: './index.html', // Garante que o index.html está na raiz
+        input: './index.html',
       }
     }
   };
