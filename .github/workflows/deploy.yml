@@ -27,3 +27,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/         # ou build, dist nesse caso/
         server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+        dangerous-clean-slate: false
