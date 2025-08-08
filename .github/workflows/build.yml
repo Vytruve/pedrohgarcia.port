@@ -1,3 +1,5 @@
+# .github/workflows/deploy.yml
+
 name: Build e Deploy para GitHub Pages
 
 on:
@@ -9,21 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Faz checkout do repositório
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      # 2. Configura Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
 
+      # 3. Instala dependências
       - name: Instalar dependências
         run: npm install
 
+      # 4. Executa o build
       - name: Buildar o projeto
         run: npm run build
 
+      # 5. Faz deploy da pasta 'dist' para o branch gh-pages
       - name: Deploy para o GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
